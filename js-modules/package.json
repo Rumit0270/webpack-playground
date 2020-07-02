@@ -1,0 +1,10 @@
+{
+  "name": "js-modules",
+  "version": "1.0.0",
+  "description": "Webpack basic",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.43.0"
+  }
+}
