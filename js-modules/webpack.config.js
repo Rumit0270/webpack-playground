@@ -6,8 +6,12 @@ const config = {
   entry: './src/index.js',
   // Define the output for the bundle
   output: {
+    // define the output dir path
     path: path.resolve(__dirname, 'build'),
+    // define the output filename
     filename: 'bundle.js',
+    // define the public path for assets
+    publicPath: 'build/',
   },
   module: {
     rules: [
@@ -26,6 +30,19 @@ const config = {
       {
         test: /\.css$/i,
         use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      // loader for handling images
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            // images greater than 32kb are places as separate images
+            // images less than 32kb are places in bundle itself as base64
+            options: { limit: 32768 },
+          },
+          'image-webpack-loader',
+        ],
       },
     ],
   },

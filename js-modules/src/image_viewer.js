@@ -1,6 +1,8 @@
 // import css in js. Added to the bundle using webpack
 // css loader
 import './image_viewer.css';
+import big from '../assets/big.jpeg';
+import small from '../assets/small.jpeg';
 
 const image = document.createElement('img');
 image.src =
@@ -8,3 +10,17 @@ image.src =
 image.classList.add('my-random-img');
 
 document.body.appendChild(image);
+
+// add local images
+// compressed image is added for small images from bundle
+const smallImage = document.createElement('img');
+smallImage.src = small;
+smallImage.classList.add('small-img');
+
+document.body.appendChild(smallImage);
+
+const largeImage = document.createElement('img');
+largeImage.src = big;
+largeImage.classList.add('large-img');
+
+document.body.appendChild(largeImage);
