@@ -1,4 +1,5 @@
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   // Define the entrypoint for app
@@ -24,10 +25,12 @@ const config = {
       // loader for css
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
+  // Plugin to extract css files to a separate file
+  plugins: [new MiniCssExtractPlugin()],
   mode: 'none',
 };
 
