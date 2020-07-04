@@ -1,0 +1,19 @@
+.my-random-img {
+  width: 400px;
+  height: 600px;
+  box-shadow: 2px 3px 4px black;
+  border: 3px solid black;
+}
+
+.small-img {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+.large-img {
+  width: 500px;
+  height: 500px;
+  margin: 20px;
+}
+
