@@ -32,6 +32,13 @@ const config = {
     // define the output filename
     filename: '[name].[contenthash].js',
   },
+  // tell webpack to point logs and errors to source file
+  // and not bundle file
+  devtool: 'inline-source-map',
+  // tell webpack dev server to serve file from dist folder
+  devServer: {
+    contentBase: './dist',
+  },
   module: {
     rules: [
       {
