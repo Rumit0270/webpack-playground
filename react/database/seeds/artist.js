@@ -2,7 +2,7 @@ import _ from 'lodash';
 import faker from 'faker';
 import { GENRES } from '../constants';
 
-module.exports = function() {
+export default function () {
   return {
     _id: _.uniqueId(),
     name: faker.name.findName(),
@@ -14,7 +14,7 @@ module.exports = function() {
     netWorth: randomBetween(0, 5000000),
     labelName: faker.company.companyName(),
     retired: faker.random.boolean(),
-    albums: getAlbums()
+    albums: getAlbums(),
   };
 }
 
@@ -28,7 +28,7 @@ function getAlbums() {
       copiesSold,
       numberTracks: randomBetween(1, 20),
       image: getAlbumImage(),
-      revenue: copiesSold * 12.99
+      revenue: copiesSold * 12.99,
     };
   });
 }
@@ -49,5 +49,5 @@ function randomEntry(array) {
 }
 
 function randomBetween(min, max) {
-  return ~~(Math.random() * (max-min)) + min;
+  return ~~(Math.random() * (max - min)) + min;
 }

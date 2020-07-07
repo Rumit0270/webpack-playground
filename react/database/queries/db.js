@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const Artist = require('../seeds/artist');
+import _ from 'lodash';
+import Artist from '../seeds/artist';
 
 const artists = _.times(20, () => Artist());
 
-module.exports = artists;
+export default artists;

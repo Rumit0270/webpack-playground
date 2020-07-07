@@ -1,6 +1,6 @@
-const _ = require('lodash');
-const Artist = require('../seeds/artist');
-const db = require('./db');
+import _ from 'lodash';
+import Artist from '../seeds/artist';
+import db from './db';
 
 /**
  * Searches through the Artist collection
@@ -10,19 +10,26 @@ const db = require('./db');
  * @param {integer} limit How many records to return in the result set
  * @return {promise} A promise that resolves with the artists, count, offset, and limit
  */
-module.exports = (_criteria, sortProperty, offset = 0, limit = 20) => {
-  const criteria = _.extend({
-    age: { min: 0, max: 100 },
-    yearsActive: { min: 0, max: 100 },
-    name: ''
-  }, _criteria);
+export default (_criteria, sortProperty, offset = 0, limit = 20) => {
+  const criteria = _.extend(
+    {
+      age: { min: 0, max: 100 },
+      yearsActive: { min: 0, max: 100 },
+      name: '',
+    },
+    _criteria
+  );
 
   const artists = _.chain(db)
-    .filter(a => _.includes(_.lowerCase(a.name), _.lowerCase(criteria.name)))
-    .filter(a => a.age > criteria.age.min && a.age < criteria.age.max)
-    .filter(a => a.yearsActive > criteria.yearsActive.min && a.yearsActive < criteria.yearsActive.max)
-    .sortBy(a => a[sortProperty])
-    .value()
+    .filter((a) => _.includes(_.lowerCase(a.name), _.lowerCase(criteria.name)))
+    .filter((a) => a.age > criteria.age.min && a.age < criteria.age.max)
+    .filter(
+      (a) =>
+        a.yearsActive > criteria.yearsActive.min &&
+        a.yearsActive < criteria.yearsActive.max
+    )
+    .sortBy((a) => a[sortProperty])
+    .value();
 
   return new Promise((resolve, reject) => {
     resolve(artists);
