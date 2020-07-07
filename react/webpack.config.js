@@ -30,7 +30,7 @@ const config = {
     // define the output dir path
     path: path.resolve(__dirname, 'dist'),
     // define the output filename
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
   },
   module: {
     rules: [
@@ -51,6 +51,9 @@ const config = {
     ],
   },
   optimization: {
+    // configure webpack to identify the generated bundles by hash
+    moduleIds: 'hashed',
+    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
       name: true,
