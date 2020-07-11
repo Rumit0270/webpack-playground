@@ -1,3 +1,4 @@
+// Simple example of a webpack config file
 const path = require('path');
 
 // automatically place generated bundles in html
