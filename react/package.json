@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "NODE_ENV=production rimraf dist && webpack --config webpack.prod.js",
-    "serve": "webpack-dev-server --open --config webpack.dev.js"
+    "serve": "webpack-dev-server --open --config webpack.dev.js",
+    "deploy-gh-pages": "yarn run build && cd .. && git subtree push --prefix react/dist origin gh-pages"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
