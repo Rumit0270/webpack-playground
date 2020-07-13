@@ -7,7 +7,9 @@
   "scripts": {
     "build": "NODE_ENV=production rimraf dist && webpack --config webpack.prod.js",
     "serve": "webpack-dev-server --open --config webpack.dev.js",
-    "deploy-gh-pages": "yarn run build && cd .. && git subtree push --prefix react/dist origin gh-pages"
+    "deploy-gh-pages": "yarn run build && cd .. && git subtree push --prefix react/dist origin gh-pages",
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development node server.js"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
@@ -20,10 +22,12 @@
     "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.0.9"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "faker": "3.1.0",
     "lodash": "4.17.2",
     "react": "15.4.1",
